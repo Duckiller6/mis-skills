@@ -23,13 +23,13 @@ const gh=s=>`https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${s.path}`;
 const raw=s=>`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${s.path}`;
 const vs=s=>`https://vscode.dev/github.com/${OWNER}/${REPO}/blob/${BRANCH}/${s.path}`;
 const skillUrl=id=>location.origin+location.pathname+'?skill='+encodeURIComponent(id);
-const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[m]));
 function getStats(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return {}}}
 function ensure(s,id){if(!s[id])s[id]={opens:0,copies:0,last:null,runs:0};return s[id]}
 function record(id,type){const s=getStats(),x=ensure(s,id);x[type]=(x[type]||0)+1;x.last=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(s))}
 function totals(){const s=getStats();let opens=0,copies=0,runs=0,top=null,topN=-1;skills.forEach(k=>{const x=ensure(s,k.id);opens+=x.opens||0;copies+=x.copies||0;runs+=x.runs||0;if((x.opens||0)>topN){topN=x.opens||0;top=k}});return{s,opens,copies,runs,top,topN}}
 async function copyLink(id,b){await navigator.clipboard.writeText(skillUrl(id));record(id,'copies');b.textContent='✓ Link copiado';setTimeout(()=>b.textContent='Copiar link',1200)}
-async function useInChatGPT(id,b){const s=skills.find(x=>x.id===id);if(!s)return;const prompt=`Usá mi skill ${s.id}: ${gh(s)}\n\nLeé el SKILL.md actual y seguí sus instrucciones para lo que te pida a continuación.`;await navigator.clipboard.writeText(prompt);record(id,'copies');b.textContent='✓ Prompt copiado';setTimeout(()=>b.textContent='Usar en ChatGPT',1600)}
+function useInChatGPT(id,b){const s=skills.find(x=>x.id===id);if(!s)return;const prompt=`Usá mi skill ${s.id}: ${gh(s)}\n\nLeé el SKILL.md actual y seguí sus instrucciones para lo que te pida a continuación.\n\nQuiero que hagas esto: `;const url='https://chatgpt.com/?q='+encodeURIComponent(prompt);record(id,'copies');window.open(url,'_blank','noopener,noreferrer')}
 function getNote(){const x=localStorage.getItem(NOTES_KEY);return x===null?'CHICHA MALA, CHICHO BUENO':x}
 function saveNote(){localStorage.setItem(NOTES_KEY,document.getElementById('notesBox').value);const s=document.getElementById('savedMsg');s.classList.add('show');setTimeout(()=>s.classList.remove('show'),1200)}
 function notesBlock(){return `<section class="panel notes"><h3>Notas</h3><textarea id="notesBox">${esc(getNote())}</textarea><div class="saveRow"><button class="btn primary" onclick="saveNote()">Guardar nota</button><span class="saved" id="savedMsg">✓ Guardado</span></div></section>`}
