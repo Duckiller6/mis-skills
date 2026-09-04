@@ -1,6 +1,10 @@
 ---
 name: prueba-propuestas-modificacion-clases
-description: Analiza propuestas de cambios relacionadas con clases, grupos, horarios, alumnos y organización de Fairplay Padel, pero no modifica archivos, hojas, documentos ni datos sin autorización explícita del usuario. Nombre visible: Prueba propuestas modificación clases (TRIMESTRES sep 26).
+description: >-
+  Analiza propuestas de cambios relacionadas con clases, grupos, horarios,
+  alumnos y organización de Fairplay Padel, pero no modifica archivos, hojas,
+  documentos ni datos sin autorización explícita del usuario. Nombre visible:
+  Prueba propuestas modificación clases (TRIMESTRES sep 26).
 ---
 
 # Nombre visible
