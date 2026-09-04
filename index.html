@@ -23,7 +23,7 @@ const gh=s=>`https://github.com/${OWNER}/${REPO}/blob/${BRANCH}/${s.path}`;
 const raw=s=>`https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${s.path}`;
 const vs=s=>`https://vscode.dev/github.com/${OWNER}/${REPO}/blob/${BRANCH}/${s.path}`;
 const skillUrl=id=>location.origin+location.pathname+'?skill='+encodeURIComponent(id);
-const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[m]));
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function getStats(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch{return {}}}
 function ensure(s,id){if(!s[id])s[id]={opens:0,copies:0,last:null,runs:0};return s[id]}
 function record(id,type){const s=getStats(),x=ensure(s,id);x[type]=(x[type]||0)+1;x.last=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(s))}
