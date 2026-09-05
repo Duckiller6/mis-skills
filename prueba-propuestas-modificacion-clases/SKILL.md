@@ -47,6 +47,18 @@ No promediar ni sustituir un valor si ya existe un nivel válido en una fuente d
 # Grupos libres
 Cuando se analicen grupos disponibles, considerar como grupo existente/libre el que tenga nombre de grupo en la **columna B**, según la estructura de trabajo definida por el usuario.
 
+
+
+# Número de fila obligatorio
+En toda búsqueda, comparación o propuesta de alumnos, grupos u horarios, incluir siempre la referencia exacta del registro:
+
+- **Pestaña/hoja** y **número de fila real** tal como aparece en la hoja de cálculo; no usar el número ordinal de la lista de resultados.
+- Si la fuente es un Excel, CSV o exportación, indicar la fila visible del archivo. Si también existe el índice interno de la exportación, no confundirlo con la fila de la hoja.
+- Si el alumno aparece dentro de una nota o comentario de otra fila y no tiene una fila propia, indicarlo expresamente como **“mencionado en la fila X”**.
+- Si el mismo alumno aparece en más de una fuente, incluir todas las referencias relevantes y señalar cuál se usó para el nivel y cuál para la disponibilidad.
+- Si no se puede determinar la fila exacta, no presentar la opción como verificada: informar **“fila no determinada”** y localizarla antes de recomendarla.
+- En listas y tablas, agregar siempre una columna o campo **Fila**. Cuando haya varias hojas, usar **Hoja — fila X**.
+
 # Flujo de trabajo
 Ante una solicitud de cambio:
 
